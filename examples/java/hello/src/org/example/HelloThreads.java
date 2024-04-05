@@ -1,17 +1,15 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class HelloThreads {
-    private static void hello() throws InterruptedException {
-        var t1 = new Thread(() -> {
-            sleep(1000);
-            printHello();
-        });
-        var t2 = new Thread(() -> System.out.println("Hello from thread 2")); //create object of thread
-        t1.start(); //starts running the thread
+    private static void hello() {
+        var t1 = new Thread(() -> System.out.println("Hello from thread 1"));
+        var t2 = new Thread(() -> System.out.println("Hello from thread 2"));
+        t1.start();
         t2.start();
-        t1.join(); // wait for t1 to finish
-        t2.join();
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("====== Hello Threads    =======");
